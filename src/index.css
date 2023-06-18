@@ -39,7 +39,7 @@
 }
 
 .pic-ctn > img {
-  position: absolute;
+  position: center;
   top: 0;
   left: calc(50% - 100px);
   opacity: 0;

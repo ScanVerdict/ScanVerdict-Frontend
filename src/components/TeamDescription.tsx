@@ -1,4 +1,4 @@
-const imagePath = "https://images.app.goo.gl/xWxHKRpvS6NiuUDW9";
+import imagePath2 from "../assets/julie.png";
 
 export default function TeamDescription() {
   return (
@@ -19,13 +19,8 @@ export default function TeamDescription() {
           your products and services according to customer feedback.
         </div>
       </a>
-
       <div className="pic-ctn">
-        <img src={imagePath} alt="" className="pic" />
-        <img src={imagePath} alt="" className="pic" />
-        <img src={imagePath} alt="" className="pic" />
-        <img src={imagePath} alt="" className="pic" />
-        <img src={imagePath} alt="" className="pic" />
+        <img src={imagePath2} alt="" className="pic" />
       </div>
     </article>
   );
