@@ -14,10 +14,10 @@ export default function SuggestionCard({
 }: Company) {
   return (
     <button className="text-left flex flex-col w-64 sm:w-72 h-16 px-2 py-1 my-2 items-center text-gray-700 border-2 bg-white border-gray-300 rounded-lg hover:border-gray-500 focus:border-gray-500 focus:outline-none transition duration-100">
-      <div className="w-full flex flex-row content-end items-end">
-        <h1 className="text-xl truncate w-5/6">{name}</h1>
+      <div className="w-full flex  content-end items-end truncate">
+        <h1 className="text-md flex w-5/6 truncate">{name}</h1>
 
-        <h1 className="text-sm leading-none">{rating}</h1>
+        <h1 className="text-sm tight-snug">{rating}</h1>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="20"
@@ -29,13 +29,13 @@ export default function SuggestionCard({
         </svg>
       </div>
 
-      <div className="w-full flex flex-row">
+      <div className="w-full flex flex-row truncate">
         <h2 className="text-sm font-thin truncate">{formatted_address}</h2>
-        <h2 className="text-sm">{user_ratings_total} </h2>
+        <h2 className="text-sm tight-snug">{user_ratings_total} </h2>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="20"
-          viewBox="0 -930 960 960"
+          viewBox="0 -890 700 960"
           width="20"
           className="fill-blue-500 justify-self-end"
         >
