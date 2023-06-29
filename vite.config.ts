@@ -5,11 +5,17 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig({
   server: {
     proxy: {
-      "/api": {
+      "/gmaps_api": {
         target: "https://maps.googleapis.com/maps/api/place/textsearch",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
+        rewrite: (path) => path.replace(/^\/gmaps_api/, ""),
+      },
+      "/backend": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/backend/, ""),
       },
     },
   },

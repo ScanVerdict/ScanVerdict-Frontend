@@ -1,6 +1,8 @@
 import InputForm from "./InputForm";
 import { useRef, useState } from "react";
+import nodemailer from "nodemailer";
 
+/* eslint @typescript-eslint/no-var-requires: "off" */
 export default function ContactDialog() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -25,8 +27,39 @@ export default function ContactDialog() {
     }
   };
 
+  async function sendMail(
+    firstName: string,
+    lastName: string,
+    email: string,
+    phoneNumber: string,
+    message: string
+  ) {
+    const nodemailer = require("nodemailer");
+    // create reusable transporter object using the default SMTP transport
+    const transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      // secure: true, // true for 465, false for other ports
+      auth: {
+        user: "cecile.brown43@ethereal.email", // generated ethereal user
+        pass: "2sRt1vaJqFUeVANq7m", // generated ethereal password
+      },
+    });
+
+    // send mail with defined transport object
+    const info = await transporter.sendMail({
+      from: '"NOM PRENOM" <MAIL>', // sender address
+      to: email, // list of receivers
+      subject: `${firstName} ${lastName}, this is a test`, // Subject line
+      text: `${message}
+      ${firstName} ${lastName}
+      ${phoneNumber}
+      ${email}`,
+    });
+  }
+
   return (
-    <article>
+    <section className="h-screen w-full snap-start bg-gray-100">
       <button onClick={openDialog}>Test</button>
 
       <dialog
@@ -40,17 +73,17 @@ export default function ContactDialog() {
         }}
       >
         <form className="text-center" method="dialog">
-          <h3 className="text-[#1F2933] text-xs">Contact Us</h3>
+          <h3 className="text-xs text-[#1F2933]">Contact Us</h3>
 
-          <h1 className="text-[#1F2933] text-2xl">Get in touch</h1>
+          <h1 className="text-2xl text-[#1F2933]">Get in touch</h1>
           <br />
 
-          <h2 className="text-[#1F2933] text-sm">
+          <h2 className="text-sm text-[#1F2933]">
             We'd love to hear from you. Please fill out this form
           </h2>
           <br />
           <div className="flex flex-col gap-7">
-            <div className="flex flex-col md:flex-row w-full gap-7">
+            <div className="flex w-full flex-col gap-7 md:flex-row">
               <InputForm
                 inputInfo={firstName}
                 setInputInfo={setFirstName}
@@ -80,7 +113,12 @@ export default function ContactDialog() {
             />
 
             <div className="flex-col gap-7">
-              <button className="bg-blue-100 hover:bg-blue-200 transition text-[#1F2933] font-bold py-2 px-2 rounded inline-flex items-center">
+              <button
+                className="inline-flex items-center rounded bg-blue-100 p-2 font-bold text-[#1F2933] transition hover:bg-blue-200"
+                onClick={() => {
+                  sendMail(firstName, lastName, email, phoneNumber, message);
+                }}
+              >
                 <svg
                   fill="#000000"
                   height="20px"
@@ -111,13 +149,12 @@ export default function ContactDialog() {
                     </g>{" "}
                   </g>
                 </svg>
-
                 <span>Send</span>
               </button>
             </div>
           </div>
         </form>
       </dialog>
-    </article>
+    </section>
   );
 }

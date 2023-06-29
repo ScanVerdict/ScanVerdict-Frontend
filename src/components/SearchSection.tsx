@@ -12,7 +12,9 @@ interface Company {
 // fetching company data from google api
 async function get3Companies(newCompany: string): Promise<Array<Company>> {
   const response = await fetch(
-    `/api/json?query=${newCompany}&key=${import.meta.env.VITE_GOOGLE_API_KEY}`
+    `/gmaps_api/json?query=${newCompany}&key=${
+      import.meta.env.VITE_GOOGLE_API_KEY
+    }`
   );
   const resonseJson = await response.json();
 
@@ -45,9 +47,12 @@ export default function SearchSection() {
   }, [debouncedValue]);
 
   return (
-    <article id="search" className="h-screen bg-slate-600 text-white">
-      <h1 className="text-5xl text-center mt-36 mb-20 mx-1">
-        Search your company, we give you our analysis
+    <section
+      id="search"
+      className="h-screen w-full snap-start bg-gray-100 pt-44 text-black"
+    >
+      <h1 className="mx-1 mb-20 text-center text-5xl">
+        Search your company, we give you our analysis.
       </h1>
 
       {/* input field with a magnifying glass on left */}
@@ -55,10 +60,10 @@ export default function SearchSection() {
         <div className="relative">
           <label
             htmlFor="search-input"
-            className="absolute top-0 left-5 mt-5 mr-5 bg-white text-gray-400 cursor-pointer hover:text-blue-500 transition"
+            className="absolute left-5 top-0 mr-5 mt-5 cursor-pointer bg-white text-gray-400 transition hover:text-blue-500"
           >
             <svg
-              className="w-6 h-6 "
+              className="h-6 w-6 "
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -74,7 +79,7 @@ export default function SearchSection() {
           </label>
           <input
             type="text"
-            className="w-64 sm:w-72 h-16 px-8 pl-14 text-xl text-gray-700 bg-white border-2 border-gray-300 rounded-lg appearance-none transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="h-16 w-64 appearance-none rounded-lg border-2 border-gray-300 bg-white px-8 pl-14 text-xl text-gray-700 transition duration-200 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 sm:w-72"
             placeholder="Enter company"
             defaultValue={company}
             onChange={handleChange}
@@ -92,6 +97,6 @@ export default function SearchSection() {
           ))}
         </div>
       </div>
-    </article>
+    </section>
   );
 }

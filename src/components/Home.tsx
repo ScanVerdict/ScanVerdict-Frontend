@@ -2,18 +2,20 @@ import ContactDialog from "./ContactDialog";
 import TeamDescription from "./TeamDescription";
 import SearchSection from "./SearchSection";
 import MachineModels from "./MachineModels";
+import TestAPICall from "./TestAPICall";
 
 export default function Home() {
   return (
     // snapping
-    <section>
+    <main className="snap max-h-screen snap-y snap-mandatory overflow-y-scroll">
       <SearchSection />
+
+      <TestAPICall />
+      <ContactDialog />
 
       <TeamDescription />
 
       <MachineModels />
-
-      <ContactDialog />
-    </section>
+    </main>
   );
 }

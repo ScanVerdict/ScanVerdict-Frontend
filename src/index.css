@@ -2,15 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-}
-
 @keyframes display {
   0% {
-    transform: translateX(200px);
+    transform: translateX(192px);
     opacity: 0;
   }
   10% {
@@ -22,39 +16,48 @@
     opacity: 1;
   }
   30% {
-    transform: translateX(-200px);
+    transform: translateX(-188px);
     opacity: 0;
   }
   100% {
-    transform: translateX(-200px);
+    transform: translateX(-188px);
     opacity: 0;
   }
 }
 
-.pic-ctn {
-  position: relative;
-  width: 100vw;
-  height: 300px;
-  margin-top: 15vh;
-}
-
-.pic-ctn > img {
-  position: center;
+.tout > .case {
+  position: absolute;
   top: 0;
   left: calc(50% - 100px);
   opacity: 0;
   animation: display 10s infinite;
 }
 
-img:nth-child(2) {
+.case:nth-child(2) {
   animation-delay: 2s;
 }
-img:nth-child(3) {
+.case:nth-child(3) {
   animation-delay: 4s;
 }
-img:nth-child(4) {
+.case:nth-child(4) {
   animation-delay: 6s;
 }
-img:nth-child(5) {
+.case:nth-child(5) {
   animation-delay: 8s;
+}
+
+/* Slider with Scroll-snap */
+@layer utilities {
+  .snap {
+    scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
+  }
+  .snap-y {
+    --scroll-snap-direction: y;
+  }
+  .snap-mandatory {
+    --scroll-snap-constraint: mandatory;
+  }
+  .snap-start {
+    scroll-snap-align: start;
+  }
 }
