@@ -60,7 +60,12 @@ export default function ContactDialog() {
 
   return (
     <section className="h-screen w-full snap-start bg-gray-100">
-      <button onClick={openDialog}>Test</button>
+      <button
+        className="mx-auto inline-flex items-center rounded bg-blue-100 p-2 font-bold text-[#1F2933] transition hover:bg-blue-200"
+        onClick={openDialog}
+      >
+        Test
+      </button>
 
       <dialog
         ref={dialogRef}

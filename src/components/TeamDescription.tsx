@@ -1,12 +1,13 @@
 import imagePath2 from "../assets/julie.png";
+import imagePath3 from "../assets/victor.png";
 
 export default function TeamDescription() {
   return (
     <section
-      className="h-screen w-full snap-start bg-gray-100"
+      className="h-screen w-full snap-start pt-28 bg-gray-100"
       id="teamdescription"
     >
-      <a className="mx-auto mt-6 block w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow md:max-w-3xl">
+      <a className="mx-auto mt-6 block w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow md:max-w-3xl m-10">
         <h5 className="transform-3d text-2xl font-bold tracking-tight text-[#1F2933]">
           ScanVerdict
         </h5>
@@ -22,14 +23,8 @@ export default function TeamDescription() {
           your products and services according to customer feedback.
         </div>
       </a>
-      {/*<div className="pic-ctn mt-32 relative flex flex-row w-10">
-        <img src={imagePath2} alt="" className="pic h-48" />
-        <img src={imagePath2} alt="" className="pic h-48" />
-        <img src={imagePath2} alt="" className="pic h-48" />
-        <img src={imagePath2} alt="" className="pic h-48" />
-        <img src={imagePath2} alt="" className="pic h-48" />
-  </div>*/}
-      <div className="tout relative">
+
+      <div className="tout relative m-10">
         <div className="case absolute bottom-0 left-0">
           <div className="mx-auto max-w-sm rounded lg:flex">
             <div className="h-48 flex-none overflow-hidden rounded bg-cover text-center lg:h-auto lg:w-48 lg:rounded-r-none">
@@ -57,7 +52,7 @@ export default function TeamDescription() {
             <div className="mx-auto flex flex-col justify-between rounded-b border-x border-b border-gray-400 bg-white p-4 leading-normal lg:rounded-b-none lg:rounded-r lg:border-l-0 lg:border-t lg:border-gray-400">
               <div className="mb-8">
                 <div className="mb-2 text-xl font-bold text-gray-900">
-                  Julie Chen
+                  Benjamin Rossignol
                 </div>
                 <p className="text-base text-gray-700">
                   I am in the front team.
@@ -76,10 +71,10 @@ export default function TeamDescription() {
             <div className="mx-auto flex flex-col justify-between rounded-b border-x border-b border-gray-400 bg-white p-4 leading-normal lg:rounded-b-none lg:rounded-r lg:border-l-0 lg:border-t lg:border-gray-400">
               <div className="mb-8">
                 <div className="mb-2 text-xl font-bold text-gray-900">
-                  Julie Chen
+                  Jacques Zhang
                 </div>
                 <p className="text-base text-gray-700">
-                  I am in the front team.
+                  I am in the back team.
                 </p>
               </div>
             </div>
@@ -95,10 +90,29 @@ export default function TeamDescription() {
             <div className="mx-auto flex flex-col justify-between rounded-b border-x border-b border-gray-400 bg-white p-4 leading-normal lg:rounded-b-none lg:rounded-r lg:border-l-0 lg:border-t lg:border-gray-400">
               <div className="mb-8">
                 <div className="mb-2 text-xl font-bold text-gray-900">
-                  Julie Chen
+                  Emerick Szönyi
                 </div>
                 <p className="text-base text-gray-700">
-                  I am in the front team.
+                  I am in the back team.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="case absolute bottom-0 left-0">
+          <div className="mx-auto max-w-sm rounded lg:flex">
+            <div className="h-48 flex-none overflow-hidden rounded bg-cover text-center lg:h-auto lg:w-48 lg:rounded-r-none">
+              <img src={imagePath3} alt="" className="" />
+            </div>
+
+            <div className="mx-auto flex flex-col justify-between rounded-b border-x border-b border-gray-400 bg-white p-4 leading-normal lg:rounded-b-none lg:rounded-r lg:border-l-0 lg:border-t lg:border-gray-400">
+              <div className="mb-8">
+                <div className="mb-2 text-xl font-bold text-gray-900">
+                  Victor Robic
+                </div>
+                <p className="text-base text-gray-700">
+                  I am in the back team.
                 </p>
               </div>
             </div>

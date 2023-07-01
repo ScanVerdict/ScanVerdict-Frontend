@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import SuggestionCard from "./SuggestionCard";
 import { useDebounce } from "usehooks-ts";
-
+import PlotlyChart from "./PlotlyChart";
 interface Company {
   name: string;
   formatted_address: string;
@@ -49,7 +49,7 @@ export default function SearchSection() {
   return (
     <section
       id="search"
-      className="h-screen w-full snap-start bg-gray-100 pt-44 text-black"
+      className="h-screen w-full snap-start bg-gray-50 pt-32 lg:pt-44 text-black"
     >
       <h1 className="mx-1 mb-20 text-center text-5xl">
         Search your company, we give you our analysis.

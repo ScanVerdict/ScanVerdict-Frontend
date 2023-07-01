@@ -1,7 +1,7 @@
 import ContactDialog from "./ContactDialog";
 import TeamDescription from "./TeamDescription";
 import SearchSection from "./SearchSection";
-import MachineModels from "./MachineModels";
+import AlgoPresentation from "./MachineModels";
 import TestAPICall from "./TestAPICall";
 
 export default function Home() {
@@ -10,12 +10,12 @@ export default function Home() {
     <main className="snap max-h-screen snap-y snap-mandatory overflow-y-scroll">
       <SearchSection />
 
-      <TestAPICall />
-      <ContactDialog />
+      {/* <TestAPICall /> */}
+      {/* <ContactDialog /> */}
 
       <TeamDescription />
 
-      <MachineModels />
+      <AlgoPresentation />
     </main>
   );
 }

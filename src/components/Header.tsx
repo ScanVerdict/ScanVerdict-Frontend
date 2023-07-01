@@ -1,9 +1,10 @@
 import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Logo from "../assets/logo_no_text.png";
+import { useState } from "react";
 
-const navigation = [
-  { name: "Dashboard", href: "#", current: true },
+const initialNavigation = [
+  { name: "Dashboard", href: "#search", current: true },
   { name: "Team", href: "#teamdescription", current: false },
   { name: "Projects", href: "#", current: false },
   { name: "Calendar", href: "#", current: false },
@@ -13,7 +14,21 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+const Header = () => {
+  const [navigation, setNavigation] = useState(initialNavigation);
+
+  const manageCurrent = (e: any) => {
+    const clickedLinkName = e.target.innerHTML;
+    const updatedNavigation = navigation.map((item) => {
+      if (item.name === clickedLinkName) {
+        return { ...item, current: true };
+      } else {
+        return { ...item, current: false };
+      }
+    });
+    setNavigation(updatedNavigation);
+  };
+
   return (
     <Disclosure as="nav" className="fixed z-10 w-full bg-white">
       {({ open }) => (
@@ -54,24 +69,17 @@ export default function Example() {
                           item.current
                             ? "bg-gray-900 text-white"
                             : "text-black hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium scroll-smooth"
+                          "rounded-md px-3 py-2 text-sm font-medium scroll-smooth transition ease-in-out duration-150"
                         )}
                         aria-current={item.current ? "page" : undefined}
+                        style={{ scrollBehavior: "smooth" }}
+                        onClick={manageCurrent}
                       >
                         {item.name}
                       </a>
                     ))}
                   </div>
                 </div>
-              </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
               </div>
             </div>
           </div>
@@ -87,9 +95,11 @@ export default function Example() {
                     item.current
                       ? "bg-gray-900 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block rounded-md px-3 py-2 text-base font-medium"
+                    "block rounded-md px-3 py-2 text-base font-medium transition ease-in-out duration-150"
                   )}
                   aria-current={item.current ? "page" : undefined}
+                  style={{ scrollBehavior: "smooth" }}
+                  onClick={manageCurrent}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -100,4 +110,6 @@ export default function Example() {
       )}
     </Disclosure>
   );
-}
+};
+
+export default Header;

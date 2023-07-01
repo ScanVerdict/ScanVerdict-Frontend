@@ -4,7 +4,7 @@
 
 @keyframes display {
   0% {
-    transform: translateX(192px);
+    transform: translateX(180px);
     opacity: 0;
   }
   10% {
@@ -13,10 +13,14 @@
   }
   20% {
     transform: translateX(0);
-    opacity: 1;
+    opacity: 0;
   }
   30% {
-    transform: translateX(-188px);
+    transform: translateX(-180px);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(-180px);
     opacity: 0;
   }
   100% {
@@ -28,9 +32,9 @@
 .tout > .case {
   position: absolute;
   top: 0;
-  left: calc(50% - 100px);
+  left: calc(50% - 200px);
   opacity: 0;
-  animation: display 10s infinite;
+  animation: display 12s infinite;
 }
 
 .case:nth-child(2) {
@@ -44,6 +48,9 @@
 }
 .case:nth-child(5) {
   animation-delay: 8s;
+}
+.case:nth-child(6) {
+  animation-delay: 10s;
 }
 
 /* Slider with Scroll-snap */
