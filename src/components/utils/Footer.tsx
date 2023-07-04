@@ -8,7 +8,7 @@ export default function Footer() {
       {location.pathname === "/" ? (
         <a
           href="#search"
-          className="fixed bottom-24 right-0 inline-flex items-center rounded bg-gray-900 px-4 py-2 font-bold text-white hover:bg-gray-800 focus:outline-none"
+          className="fixed bottom-24 right-0 hidden items-center rounded bg-gray-900 px-4 py-2 font-bold text-white hover:bg-gray-800 focus:outline-none sm:inline-flex"
         >
           Scroll to Top
         </a>
@@ -30,7 +30,7 @@ export default function Footer() {
             >
               ScanVerdict™
             </a>
-            . All Rights Reserved.
+            <span className="hidden sm:inline">. All Rights Reserved.</span>
           </span>
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <a

@@ -1,11 +1,51 @@
+import Plot from "react-plotly.js";
+
 export default function AlgoPresentation() {
+  // data is a scatter with a line, preferably a more hotizontal one
+
+  const data = [
+    {
+      x: ["Amazon", "Apple", "Google", "Microsoft", "Facebook"],
+      y: [4.2, 4.5, 4.4, 4.3, 4.5],
+      type: "scatter",
+      mode: "lines+markers",
+      marker: { color: "#1F2933" },
+    },
+
+    {
+      x: ["Amazon", "Apple", "Google", "Microsoft", "Facebook"],
+      y: [4.2, 4.5, 4.4, 4.3, 4.5],
+      type: "scatter",
+      mode: "lines",
+      marker: { color: "#1F2933" },
+    },
+  ] as any;
+
+  const layout = {
+    title: "Average rating of the 5 most popular companies",
+    height: 300,
+    font: {
+      family: "Roboto",
+      size: 18,
+      color: "#1F2933",
+    },
+    xaxis: {
+      tickangle: -45,
+    },
+    yaxis: {
+      range: [0, 5],
+    },
+    paper_bgcolor: "#F9FAFB",
+    plot_bgcolor: "#F9FAFB",
+  };
+
   return (
     <section
       className="h-screen w-full snap-start bg-gray-50 pt-16 font-normal text-[#1F2933]"
       id="algopresentation"
     >
-      <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
-        <a className="m-5 mx-auto block w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow md:max-w-md">
+      <div className="grid md:grid-cols-1 lg:grid-cols-2">
+        <a className="m-2 mx-auto block w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow md:max-w-md">
           <h5 className="text-2xl font-bold tracking-tight text-[#1F2933]">
             Our algorithms
           </h5>
@@ -23,26 +63,27 @@ export default function AlgoPresentation() {
           </div>
         </a>
 
-        <a className="m-5 mx-auto block w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow md:max-w-md">
+        <a className="m-2 mx-auto block w-full max-w-sm rounded-lg border border-gray-200 bg-white p-4 shadow md:max-w-md">
           <h5 className="text-2xl font-bold tracking-tight text-[#1F2933]">
             In comparaison with other companies
           </h5>
           <br />
           <div className="font-normal text-[#1F2933]">
             <div className="whitespace-pre-line">
-              We are a team of 5 students from the EFREI engineering school and
-              we offer analysis of all comments from all companies companies in
-              order to advise you on the best companies for your your needs.
+              Compared to other companies, our sentiment analysis project stands
+              out for its innovative approach and accuracy in analyzing user
+              sentiments. We have developed highly performant natural language
+              processing models that enable us to provide more reliable and
+              meaningful results than most of our competitors. Additionally, our
+              system is highly scalable and can be customized to meet the
+              specific needs of each client.
             </div>
-            <br />
-            We also offer recommendations to companies to improve the quality of
-            your products and services according to customer feedback.
           </div>
         </a>
       </div>
       {/* center div */}
-      <div className="m-10 mx-auto mt-6 block w-full max-w-sm rounded-lg border border-gray-200 bg-white p-6 shadow md:max-w-3xl">
-        {/* <PlotlyChart /> */}
+      <div className="mx-auto mt-6 hidden w-full max-w-sm rounded-lg border border-gray-200 bg-white p-2 shadow md:max-w-3xl md:flex md:items-center md:justify-center">
+        <Plot data={data} layout={layout} />
       </div>
     </section>
   );
