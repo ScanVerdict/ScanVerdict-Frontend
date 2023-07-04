@@ -1,4 +1,4 @@
-# ScanVerdit-ML
+# ScanVerdict-Frontend
 
 ## About 
 
