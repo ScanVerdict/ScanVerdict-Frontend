@@ -56,10 +56,9 @@ export default function SearchSection() {
       id="search"
       className="h-screen w-full snap-start bg-gray-50 pt-32 text-black lg:pt-44"
     >
-      <h1 className="mx-1 mb-20 text-center text-5xl">
+      <h1 className="mx-1 mb-4 md:mb-20 text-center text-5xl">
         Search your company, we give you our analysis.
       </h1>
-      {/* <Plot data={data} layout={layout} /> */}
 
       <div className="flex items-center justify-center">
         <div className="relative">

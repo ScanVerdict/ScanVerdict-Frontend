@@ -1,7 +1,6 @@
 import InputForm from "../home/InputForm";
 import { useRef, useState } from "react";
 
-/* eslint @typescript-eslint/no-var-requires: "off" */
 export default function ContactDialog() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

@@ -10,10 +10,16 @@ export default function AnalysisPage() {
       <h1 className="my-32 text-4xl font-bold text-black">Analysis</h1>
 
       {plots.map((plot: any) => {
-        return <Plot data={plot.data} layout={plot.layout} />;
+        return (
+          <Plot
+            data={plot.data}
+            layout={plot.layout}
+            className="h-full w-full"
+          />
+        );
       })}
 
-      <div className="my-32 text-2xl">
+      <div cmy-32 text-center text-2xllassName="my-32 text-2xl text-center">
         The plots are not clear for you?
         <ContactDialog />
       </div>
