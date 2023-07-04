@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import SuggestionCard from "./SuggestionCard";
 import { useDebounce } from "usehooks-ts";
-import PlotlyChart from "./PlotlyChart";
+
 interface Company {
+  place_id: string;
   name: string;
   formatted_address: string;
   rating: number;
@@ -20,7 +21,11 @@ async function get3Companies(newCompany: string): Promise<Array<Company>> {
 
   // if the request is ok, we can get the first 3 startups
   if (resonseJson.status === "OK") {
-    const companiesData: Array<Company> = resonseJson.results.slice(0, 3);
+    // keep only companiesdata that have a non 0 user rating total
+    let companiesData: Array<Company> = resonseJson.results.filter(
+      (company: Company) => company.user_ratings_total !== 0
+    );
+    companiesData = companiesData.slice(0, 3);
     return companiesData;
   }
 
@@ -49,15 +54,16 @@ export default function SearchSection() {
   return (
     <section
       id="search"
-      className="h-screen w-full snap-start bg-gray-50 pt-32 lg:pt-44 text-black"
+      className="h-screen w-full snap-start bg-gray-50 pt-32 text-black lg:pt-44"
     >
       <h1 className="mx-1 mb-20 text-center text-5xl">
         Search your company, we give you our analysis.
       </h1>
+      {/* <Plot data={data} layout={layout} /> */}
 
-      {/* input field with a magnifying glass on left */}
       <div className="flex items-center justify-center">
         <div className="relative">
+          {/* input field with a magnifying glass on left */}
           <label
             htmlFor="search-input"
             className="absolute left-5 top-0 mr-5 mt-5 cursor-pointer bg-white text-gray-400 transition hover:text-blue-500"
@@ -89,6 +95,7 @@ export default function SearchSection() {
           {fetchedCompanies.map((companyData, index) => (
             <SuggestionCard
               key={index}
+              place_id={companyData.place_id}
               name={companyData.name}
               formatted_address={companyData.formatted_address}
               rating={companyData.rating}

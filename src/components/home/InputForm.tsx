@@ -2,12 +2,14 @@ type InputFormProps = {
   inputInfo: string;
   setInputInfo: (value: string) => void;
   inputLabel: string;
+  autoComplete: string;
 };
 
 export default function InputForm({
   inputInfo,
   setInputInfo,
   inputLabel,
+  autoComplete,
 }: InputFormProps) {
   let inputType = "text";
 
@@ -21,6 +23,7 @@ export default function InputForm({
     <div className="relative">
       {inputLabel === "Message" ? (
         <textarea
+          autoComplete={autoComplete}
           id={inputLabel}
           className="peer block w-full resize-none appearance-none rounded-lg border bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-300 focus:outline-none focus:ring-blue-300"
           placeholder=" "
@@ -32,7 +35,7 @@ export default function InputForm({
         />
       ) : (
         <input
-          autoComplete="given-name"
+          autoComplete={autoComplete}
           type={inputType}
           id={inputLabel}
           className="peer block w-full resize-none appearance-none rounded-lg border bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-300 focus:outline-none focus:ring-blue-300"

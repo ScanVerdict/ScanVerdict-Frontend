@@ -11,11 +11,11 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/gmaps_api/, ""),
       },
-      "/backend": {
-        target: "http://localhost:5000",
+      "/get_place_details": {
+        target: "http://127.0.0.1:5000/get_place_details",
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/backend/, ""),
+        rewrite: (path) => path.replace(/^\/get_place_details/, ""),
       },
     },
   },

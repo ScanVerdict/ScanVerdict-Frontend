@@ -1,13 +1,13 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import Logo from "../assets/logo_no_text.png";
+import Logo from "../../assets/logo_no_text.png";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const initialNavigation = [
   { name: "Dashboard", href: "#search", current: true },
   { name: "Team", href: "#teamdescription", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Algorithms", href: "#algopresentation", current: false },
 ];
 
 function classNames(...classes: string[]) {
@@ -16,6 +16,7 @@ function classNames(...classes: string[]) {
 
 const Header = () => {
   const [navigation, setNavigation] = useState(initialNavigation);
+  const location = useLocation();
 
   const manageCurrent = (e: any) => {
     const clickedLinkName = e.target.innerHTML;
@@ -47,39 +48,32 @@ const Header = () => {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex shrink-0 items-center">
-                  <img
-                    className="block h-8 w-auto lg:hidden"
-                    src={Logo}
-                    alt="Your Company"
-                  />
-                  <img
-                    className="hidden h-8 w-auto lg:block"
-                    src={Logo}
-                    alt="Your Company"
-                  />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4 scroll-smooth">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-black hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium scroll-smooth transition ease-in-out duration-150"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                        style={{ scrollBehavior: "smooth" }}
-                        onClick={manageCurrent}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
+                <Link to="/">
+                  <img className="h-8 w-auto" src={Logo} alt="Your Company" />
+                </Link>
+                {location.pathname === "/" && (
+                  <div className="hidden sm:ml-6 sm:block">
+                    <div className="flex space-x-4 scroll-smooth">
+                      {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current
+                              ? "bg-gray-900 text-white"
+                              : "text-black hover:bg-gray-700 hover:text-white",
+                            "rounded-md px-3 py-2 text-sm font-medium scroll-smooth transition ease-in-out duration-150"
+                          )}
+                          aria-current={item.current ? "page" : undefined}
+                          style={{ scrollBehavior: "smooth" }}
+                          onClick={manageCurrent}
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           </div>

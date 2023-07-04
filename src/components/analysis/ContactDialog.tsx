@@ -1,6 +1,5 @@
-import InputForm from "./InputForm";
+import InputForm from "../home/InputForm";
 import { useRef, useState } from "react";
-import nodemailer from "nodemailer";
 
 /* eslint @typescript-eslint/no-var-requires: "off" */
 export default function ContactDialog() {
@@ -27,46 +26,16 @@ export default function ContactDialog() {
     }
   };
 
-  async function sendMail(
-    firstName: string,
-    lastName: string,
-    email: string,
-    phoneNumber: string,
-    message: string
-  ) {
-    const nodemailer = require("nodemailer");
-    // create reusable transporter object using the default SMTP transport
-    const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
-      port: 587,
-      // secure: true, // true for 465, false for other ports
-      auth: {
-        user: "cecile.brown43@ethereal.email", // generated ethereal user
-        pass: "2sRt1vaJqFUeVANq7m", // generated ethereal password
-      },
-    });
-
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-      from: '"NOM PRENOM" <MAIL>', // sender address
-      to: email, // list of receivers
-      subject: `${firstName} ${lastName}, this is a test`, // Subject line
-      text: `${message}
-      ${firstName} ${lastName}
-      ${phoneNumber}
-      ${email}`,
-    });
-  }
-
   return (
-    <section className="h-screen w-full snap-start bg-gray-100">
+    <>
       <button
-        className="mx-auto inline-flex items-center rounded bg-blue-100 p-2 font-bold text-[#1F2933] transition hover:bg-blue-200"
+        // className="mx-auto inline-flex items-center rounded bg-blue-100 p-2 font-bold text-[#1F2933] transition hover:bg-blue-200 text-center"
+        // center button
+        className="mx-auto inline-flex items-center rounded bg-blue-100 p-2 font-bold text-[#1F2933] transition hover:bg-blue-200 text-center"
         onClick={openDialog}
       >
-        Test
+        Contact us
       </button>
-
       <dialog
         ref={dialogRef}
         className={`transition-opacity duration-300 ${
@@ -93,11 +62,13 @@ export default function ContactDialog() {
                 inputInfo={firstName}
                 setInputInfo={setFirstName}
                 inputLabel="First name"
+                autoComplete="given-name"
               />
               <InputForm
                 inputInfo={lastName}
                 setInputInfo={setLastName}
                 inputLabel="Last name"
+                autoComplete="family-name"
               />
             </div>
 
@@ -105,24 +76,25 @@ export default function ContactDialog() {
               inputInfo={email}
               setInputInfo={setEmail}
               inputLabel="Email"
+              autoComplete="email"
             />
             <InputForm
               inputInfo={phoneNumber}
               setInputInfo={setPhoneNumber}
               inputLabel="Phone number"
+              autoComplete="tel"
             />
             <InputForm
               inputInfo={message}
               setInputInfo={setMessage}
               inputLabel="Message"
+              autoComplete="off"
             />
 
             <div className="flex-col gap-7">
-              <button
+              <a
                 className="inline-flex items-center rounded bg-blue-100 p-2 font-bold text-[#1F2933] transition hover:bg-blue-200"
-                onClick={() => {
-                  sendMail(firstName, lastName, email, phoneNumber, message);
-                }}
+                href={`mailto:scanverdict@gmail.com?subject=Contact%20Us&body=Hi%20ScanVerdict%20Team,%0DI%20Want%20More%20Information%20about%20my%20company:%0D%0D${message}%0D%0D${firstName}%20${lastName}%0D${phoneNumber}%0D${email}`}
               >
                 <svg
                   fill="#000000"
@@ -140,26 +112,24 @@ export default function ContactDialog() {
                     strokeLinejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
-                    {" "}
                     <g id="XMLID_51_">
-                      {" "}
                       <path
                         id="XMLID_53_"
                         d="M164.711,456.687c0,2.966,1.647,5.686,4.266,7.072c2.617,1.385,5.799,1.207,8.245-0.468l55.09-37.616 l-67.6-32.22V456.687z"
-                      ></path>{" "}
+                      ></path>
                       <path
                         id="XMLID_52_"
                         d="M492.431,32.443c-1.513-1.395-3.466-2.125-5.44-2.125c-1.19,0-2.377,0.264-3.5,0.816L7.905,264.422 c-4.861,2.389-7.937,7.353-7.904,12.783c0.033,5.423,3.161,10.353,8.057,12.689l125.342,59.724l250.62-205.99L164.455,364.414 l156.145,74.4c1.918,0.919,4.012,1.376,6.084,1.376c1.768,0,3.519-0.322,5.186-0.977c3.637-1.438,6.527-4.318,7.97-7.956 L494.436,41.257C495.66,38.188,494.862,34.679,492.431,32.443z"
-                      ></path>{" "}
-                    </g>{" "}
+                      ></path>
+                    </g>
                   </g>
                 </svg>
                 <span>Send</span>
-              </button>
+              </a>
             </div>
           </div>
         </form>
       </dialog>
-    </section>
+    </>
   );
 }
